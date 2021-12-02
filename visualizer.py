@@ -103,7 +103,7 @@ def get_subtitle_at_frame(subtitles, starts, ends, frame):
 #----------------------------------------------------------------------------------------------------------------------------
 # GET ALL THE LYRIC CAPTIONS FROM THE JSON FILE
 print('Start processing captions...')
-with open("captions_demo.json","r") as file:    # changed to captions2
+with open("captions_demo.json","r") as file:
     captions = file.read()
 
 captions_info = json.loads(captions)
@@ -112,12 +112,12 @@ numCaptions = len(allCaptions)
 print(f'Total number of captions = {numCaptions}')
 
 
-# LISTS TO STORE ALL THE CAPTIONS AS WELL AS START AND END TIMES FOR EACH CAPTION
+# LISTS TO STORE ALL CAPTIONS AS WELL AS THEIR START AND END TIMES
 subtitles = []
 starts = []
 ends = []
 
-# PREPROCESS CAPTION INFORMATION AND POPULATE THE LISTS WITH THEIR INFORMATION
+# PREPROCESS CAPTION INFORMATION AND POPULATE THE LISTS WITH THEIR DATA
 for index in range(len(allCaptions)):
     
     caption = allCaptions[index]
@@ -134,7 +134,6 @@ for index in range(len(allCaptions)):
         starts.append(caption_start)
         ends.append(caption_end)
         subtitles.append(caption_text)
-
 
 
 #----------------------------------------------------------------------------------------------------------------------------
@@ -169,10 +168,8 @@ for frame in range(start_frame, end_frame+1):
 print("Subtitle image sequence successfully compiled.")
 
 
-
 #----------------------------------------------------------------------------------------------------------------------------
-# COMBINE THE GENERATED CAPTION FRAMES WITH THE VIDEO AND AUDIO TO PRODUCE CAPTIONED VISUALIZATION
-
+# COMBINE GENERATED CAPTION FRAMES WITH VIDEO AND AUDIO TO PRODUCE CAPTIONED VISUALIZATION
 baseFile = ffmpeg.input('visual_demo.mp4')
 overlayFile = ffmpeg.input(IMAGE_SEQUENCE_OUTPUT_DIRECTORY+'/frame_%d.png', framerate = FRAMERATE)
 audioFile = ffmpeg.input('africa_demo.mp4')
@@ -186,22 +183,8 @@ audioFile = ffmpeg.input('africa_demo.mp4')
 )
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#----------------------------------------------------------------------------------------------------------------------------
+# OLD CODE THAT WAS USED FOR FFMPEG TESTING AND GETTING LYRICS
 '''
 # this sequence of commands combines both the overlay frames with the main video and
 # applies the audio from the main video as the audio of the output video.
@@ -216,28 +199,15 @@ overlayFile = ffmpeg.input(IMAGE_SEQUENCE_OUTPUT_DIRECTORY+'/frame_%d.png', fram
     .run()
 )
 
-with open("align.json","r") as alignFile:
-    total = alignFile.read()
-    alignFile.close()
-
-aligned_json = json.loads(total)
-transcript_words = aligned_json["transcript"].replace("-", " ").split()
-print(transcript_words)
-numwords = len(transcript_words)
-print(f'Number of words was: {numwords}')
-
 tokens = {
     "clientID" : "znHspY84yoNPiHyK1EitvMK9FZjJJWDAYIkRP7-MOH0mQRE1ZYOSXi9CUmHlDnTA",
     "secretKey" : "duiJ38runGaCKObbIqAQZDY0doz4puUdBxbvBRjYa_F13WD_5dwo9GUJXhr7XWX5d5ZDJv6OoyY_JWljNoct3w",
     "accessToken" : "12BWc57-0c55ajmZfA5yTA78spI-4lhHyVvUouOpV_4DAkyiDqm0zcjdd8rdV7jN",
 }
 
-
-
 # https://towardsdatascience.com/song-lyrics-genius-api-dcc2819c29
 # Old stuff to download lyrics from Genius API
 import lyricsgenius as lg
-
 
 genius = lg.Genius(access_token=token, excluded_terms=["(Remix)","(Live)"], remove_section_headers=True)
 
