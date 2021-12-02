@@ -8,7 +8,7 @@ I would like to credit to Carl von Bonin (@carl-vbn) who is the author of the or
 
 
 ## How the Demo Works:
-Captions were generated manually using lyrics downloaded from the Genius API since the original open-source tool, [Gentle](https://github.com/lowerquality/gentle) which automatically generated captions as well as their associated start and end times, failed to identify all the lyrics. A specialized JSON format was used to encapsulate each caption's lyric content as well as their start and end times instead to improve accuracy.
+Unfortunately the original open-source tool, [Gentle](https://github.com/lowerquality/gentle) which automatically generated captions as well as their associated start and end times based upon a provided transcript, failed to identify all the lyrics and times. As a result, captions were generated manually with lyrics downloaded from the Genius API instead. A specialized JSON format was used to encapsulate each caption's lyric content as well as their start and end times to improve audio alignment accuracy.
 
 Animated captions consisted of parsing caption information from the specialized JSON file and programmatically generating frames which display lyrics at the appropriate times in the visualization. Frame generation was accomplished using a modified version of the Python script originally developed by author Carl von Bonin.
 
