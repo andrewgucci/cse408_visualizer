@@ -78,8 +78,8 @@ def get_text_scale_at_frame(start_time, frame):
     return scale
 
 
-# RETURNS THE INDEX OF THE SUBTITLE TEXT THAT SHOULD BE PRESENT ON A SPECIFIC FRAME.
-def get_subtitle_at_frame(subtitles, starts, ends, frame):
+# RETURNS THE INDEX OF THE CAPTION TEXT THAT SHOULD BE PRESENT ON A SPECIFIC FRAME.
+def get_caption_at_frame(subtitles, starts, ends, frame):
     global currentIndex
     
     frame_time = round((frame/FRAMERATE),2)
@@ -153,7 +153,7 @@ else:
 
 # GENERATES ALL OF THE FRAMES WHICH WILL GET CONVERTED INTO A VIDEO OVERLAY OF SYNCHRONIZED LYRICS
 for frame in range(start_frame, end_frame+1):
-    subtitle_index = get_subtitle_at_frame(subtitles, starts, ends, frame)
+    subtitle_index = get_caption_at_frame(subtitles, starts, ends, frame)
 
     img = base.copy()
     if subtitle_index is not None:
