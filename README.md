@@ -20,9 +20,10 @@ After the generation process, caption frames are then converted into video forma
 2. Download [FFmpeg](https://www.ffmpeg.org/download.html) for your OS and follow the installation guide
    * If you're using a Mac, download a static build, unzip the file, and copy the **ffmpeg binary** into your ```/usr/local/bin``` directory
 3. Open a terminal or IDE and run the command ```pip install ffmpeg-python```
-4. Download the required video files available at this [Google Drive folder](https://drive.google.com/drive/folders/1FkWSY-HvCIxcB460NIJnvaL5N91FXyni?usp=sharing)
+4. In the same terminal or IDE, run the command ```pip install Pillow```
+5. Download the required video files available at this [Google Drive folder](https://drive.google.com/drive/folders/1FkWSY-HvCIxcB460NIJnvaL5N91FXyni?usp=sharing)
    * Please ensure these video files are copied into the directory where you cloned this repository
-5. Open a terminal or IDE in the directory where you cloned this repository and run the command ```python visualizer.py```
+6. Open a terminal or IDE in the directory where you cloned this repository and run the command ```python visualizer.py```
 
 
 ## Warning:
